@@ -1,0 +1,109 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "Test engine",
+    "description" : "sample engine",
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "https://www.apache.org/licenses/LICENSE-2.0"
+    },
+    "version" : "1.0.0"
+  },
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/GetEngine" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "ID",
+          "in" : "query"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Connection OK",
+            "schema" : {
+              "$ref" : "#/definitions/engineline"
+            },
+            "examples" : {
+              "application/json" : "{\n    \"ID\": \"strings\",\n    \"Name\":\"strings\",\n    \"Part\":\"strings\",\n    \"Power\":\"strings\"\n}"
+            }
+          }
+        }
+      }
+    },
+    "/CreateEngine" : {
+      "post" : {
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "ID",
+          "in" : "query",
+          "description" : "Info ",
+          "required" : true,
+          "type" : "integer"
+        }, {
+          "name" : "Header",
+          "in" : "header",
+          "description" : "info",
+          "type" : "string"
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Success"
+          }
+        }
+      }
+    },
+    "/DeleteEngine" : {
+      "delete" : {
+        "responses" : {
+          "204" : {
+            "description" : "No info"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "engineline" : {
+      "title" : "Root Type for engineline",
+      "description" : "information",
+      "required" : [ "ID" ],
+      "type" : "object",
+      "properties" : {
+        "ID" : {
+          "description" : "Information",
+          "type" : "integer"
+        },
+        "Name" : {
+          "description" : "Information",
+          "type" : "string"
+        },
+        "Part" : {
+          "description" : "Information",
+          "type" : "string"
+        },
+        "Power" : {
+          "description" : "Information",
+          "type" : "string"
+        },
+        "Color" : {
+          "description" : "Variants info",
+          "type" : "string"
+        }
+      },
+      "example" : "{\n    \"ID\": \"strings\",\n    \"Name\":\"strings\",\n    \"Part\":\"strings\",\n    \"Power\":\"strings\"\n}"
+    }
+  },
+  "securityDefinitions" : {
+    "Engineline" : {
+      "type" : "basic",
+      "description" : "info"
+    }
+  }
+}
